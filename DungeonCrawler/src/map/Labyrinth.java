@@ -4,7 +4,7 @@ import static global.GlutUtils.glutSolidCube;
 import static org.lwjgl.opengl.GL11.*;
 
 public class Labyrinth {
-    private int[][] cells;
+    private final int[][] cells;
 
     public Labyrinth(int[][] cells) {
         this.cells = cells;
