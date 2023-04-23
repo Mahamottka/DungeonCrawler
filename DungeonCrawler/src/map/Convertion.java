@@ -55,4 +55,11 @@ public class Convertion {
         }
         return cells;
     }
+
+    public boolean isCollision(int x, int z){
+        if (cells[z][x] == 3){
+           return true;
+        }
+        return false;
+    }
 }

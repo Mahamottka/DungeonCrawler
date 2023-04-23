@@ -1,5 +1,7 @@
 package map;
 
+import lwjglutils.OGLTexture2D;
+
 import static global.GlutUtils.glutSolidCube;
 import static org.lwjgl.opengl.GL11.*;
 
@@ -17,11 +19,11 @@ public class Labyrinth {
                 glPushMatrix();
                 glTranslatef(j, 0, i);
                 if (id == 1 || id == 2) {
-                    glColor3f(1, 1, 1);
+                    Textures.getInstance().getHallway().bind();
                     glutSolidCube(1);
                 } else if (id == 3) {
+                    Textures.getInstance().getWall().bind();
                     glPushMatrix();
-                    glColor3f(0, 0, 139);
                     glTranslatef(0, 1f, 0); // moving the wall upwards to make it 3D
                     glutSolidCube(1);
                     glPopMatrix();
@@ -30,6 +32,4 @@ public class Labyrinth {
             }
         }
     }
-
-
 }
