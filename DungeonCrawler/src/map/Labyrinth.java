@@ -20,9 +20,11 @@ public class Labyrinth {
                 glTranslatef(j, 0, i);
                 if (id == 1 || id == 2) {
                     Textures.getInstance().getHallway().bind();
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
                     glutSolidCube(1);
                 } else if (id == 3) {
                     Textures.getInstance().getWall().bind();
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
                     glPushMatrix();
                     glTranslatef(0, 1f, 0); // moving the wall upwards to make it 3D
                     glutSolidCube(1);

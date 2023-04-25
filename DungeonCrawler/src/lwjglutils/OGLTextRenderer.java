@@ -218,6 +218,23 @@ public class OGLTextRenderer {
 	}
 
 	/**
+	 * Get string dimmensions
+	 *
+	 * @param s
+	 *            string to draw
+	 *
+	 * @return int[]
+	 *               [x,y]
+	 */
+	public int[] getStr2DSize(String s){
+		Graphics gr = img.getGraphics();
+		gr.setFont(font);
+		Rectangle2D textBox = gr.getFontMetrics().getStringBounds(s, 0,
+				s.length(), gr);
+		return new int[]{(int) textBox.getWidth(), (int) textBox.getHeight()};
+	}
+
+	/**
 	 * Invert color and background current color.
 	 */
 	public void invert() {

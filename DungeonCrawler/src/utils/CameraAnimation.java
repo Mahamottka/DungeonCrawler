@@ -10,8 +10,8 @@ public class CameraAnimation {
     private AnimState state;
     private int rotateDir;
     private Vec3D moveDir, moveTarget;
-    private final float rotateTime = 500;
-    private final float moveTime = 500;
+    private final float rotateTime = 400;
+    private final float moveTime = 350;
 
     public CameraAnimation(){}
 
