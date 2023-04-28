@@ -1,4 +1,4 @@
-package utils;
+package animations;
 
 import global.GLCamera;
 import transforms.Vec3D;
@@ -10,8 +10,8 @@ public class CameraAnimation {
     private AnimState state;
     private int rotateDir;
     private Vec3D moveDir, moveTarget;
-    private final float rotateTime = 400;
-    private final float moveTime = 350;
+    private final float rotateTime = 350;
+    private final float moveTime = 300;
 
     public CameraAnimation(){}
 

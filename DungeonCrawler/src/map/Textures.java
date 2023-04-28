@@ -9,7 +9,7 @@ import static org.lwjgl.opengl.GL11.GL_LINEAR;
 
 public class Textures {
     private static Textures instance = null;
-    private OGLTexture2D wall, hallway, enemy;
+    private OGLTexture2D wall, hallway, enemy, skyBox;
     private Textures() {
 
     }
@@ -32,12 +32,17 @@ public class Textures {
         return enemy;
     }
 
+    public OGLTexture2D getSkyBox() {
+        return skyBox;
+    }
+
     public void loadTextures(){
         System.out.println("Loading textures...");
         try {
             wall = new OGLTexture2D("textures/wall.png"); // vzhledem k adresari res v projektu
             hallway = new OGLTexture2D("textures/floor.png"); // vzhledem k adresari res v projektu
             enemy = new OGLTexture2D("textures/enemy.png");
+            skyBox = new OGLTexture2D("textures/skybox.jpeg");
 
         } catch (IOException e) {
             e.printStackTrace();

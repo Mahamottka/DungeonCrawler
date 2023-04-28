@@ -2,6 +2,7 @@ package global;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWWindowCloseCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GLUtil;
 import org.lwjgl.system.Configuration;
@@ -70,6 +71,7 @@ public class LwjglWindow {
 		glfwSetErrorCallback(null).free();
 	}
 
+
 	private void init() {
 		// Setup an error callback. The default implementation
 		// will print the error message in System.err.
@@ -81,8 +83,11 @@ public class LwjglWindow {
 
 		// Configure GLFW
 		glfwDefaultWindowHints(); // optional, the current window hints are already the default
+		//glfwWindowHint(GLFW_DECORATED, GLFW_FALSE); // hide window decoration
+		//glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
+
 
 		String text = renderer.getClass().getName();
 		text = text.substring(0, text.lastIndexOf('.'));
@@ -163,6 +168,15 @@ public class LwjglWindow {
 					(vidmode.width() - pWidth.get(0)) / 2,
 					(vidmode.height() - pHeight.get(0)) / 2
 			);
+
+			glfwSetWindowCloseCallback(window, new GLFWWindowCloseCallback() {
+				@Override
+				public void invoke(long window) {
+					// prevent the window from closing with X button
+					glfwSetWindowShouldClose(window, false);
+				}
+			});
+
 		} // the stack frame is popped automatically
 
 		// Make the OpenGL context current
@@ -201,4 +215,7 @@ public class LwjglWindow {
 		}
 	}
 
+	public long getWindow() {
+		return window;
+	}
 }
